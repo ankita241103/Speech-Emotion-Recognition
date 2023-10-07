@@ -14,7 +14,7 @@ The second dataset that we are using for the SER system is Toronto  Emotional Sp
 - There are 2800 audio files in total.​
 - The dataset is organized such that each of the two female actor and their emotions are contain within its own folder. ​
 
-**Convolutional Neural Networks and LSTM:​ **
+**Convolutional Neural Networks and LSTM:​**
 - The CNN model used in this project consists of 3 main blocks. All the three blocks include two convolutional layers. Each convolutional layer is followed by a ReLU activation. At the end of each block max pooling operation is applied. ​
 - The input images are first passed through two convolutional layers, after that ReLU activation operation is used to induce non-linearity. A dropout operation is used to avoid overfitting. A 2x2 max pooling layer is used for reducing the spatial dimensions of feature maps. ​
 - After the CNN part is complete the data has to be reshaped to be provided as input to the LSTM layers. The hidden unit size used here is 100. The first LSTM layer takes the flattened feature vector and outputs a sequence with 100 hidden units at each step.
