@@ -22,6 +22,20 @@ The second dataset that we are using for the SER system is Toronto  Emotional Sp
 - After passing through the all the layers, the output tensor is flattened using the view function. This is needed because input to the linear layer must be a 2-dimensional tensor.​
 - The linear layer (fully connected layer) is the layer that is responsible for final classification. It maps the flattened tensor received from the previous layer and maps it to an output of size equal to the number of classes of dataset, representing the predicted class probabilities.​
 
+**DenseNet:**
+- Densenet is a deep convolutional network which specializes in image classification​.
+- A typical DenseNet architecture consists of dense blocks and transition blocks. The dense blocks are the key building blocks of the network and are responsible for feature extraction. ​
+- Each dense block contains multiple layers, and each layer has a dense connection to all the previous layers within the same block. ​
+- The dense connectivity promotes feature reuse and allows information to flow directly across layers, which helps alleviate the vanishing gradient problem and encourages feature propagation.​
+- The transition blocks are used to control the number of feature maps and reduce the spatial dimensions of the feature maps between dense blocks.​
+- The DenseNet model implemented in the code has a total of four dense blocks and three transition blocks. The growth rate parameter determines the number of output feature maps for each layer within a dense block.​
+- The model starts with an initial convolutional layer with a 7x7 kernel, followed by batch normalization, ReLU activation, and max pooling to reduce the spatial dimensions. After the initial block, the subsequent dense blocks and transition blocks are stacked. ​
+- The number of input channels to the first dense block is 64, which corresponds to the number of output channels from the initial block. As the dense blocks progress, the number of input channels is increased based on the growth rate and the number of layers in the previous dense block.​
+- The model starts with an initial convolutional layer with a 7x7 kernel, followed by batch normalization, ReLU activation, and max pooling to reduce the spatial dimensions. After the initial block, the subsequent dense blocks and transition blocks are stacked. ​
+- The final part of the model consists of a batch normalization layer, adaptive average pooling to reduce the feature maps to a fixed size, and a linear layer for classification. The number of output classes is specified as the number of emotions in the dataset when initializing the DenseNet model.​
+- During the forward pass, the input images are passed through convolutional layers, dense blocks, and transition blocks. The output of the last transition block is passed through batch normalization, adaptive average pooling, and reshaping to a 1-dimensional tensor. Finally, the tensor is passed through the linear layer to obtain the predicted class probabilities.​
+
+
 
 
 
